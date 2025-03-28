@@ -30,3 +30,9 @@ def product_detail(request, pk):
 
     }
     return render(request, 'detail.html', ctx)
+
+def product_add(request):
+    ctx ={
+
+    }
+    return render(request, 'product_add.html', ctx)
