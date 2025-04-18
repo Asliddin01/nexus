@@ -9,7 +9,7 @@ class Profile(models.Model):
     last_name = models.CharField(max_length=30, null=True, blank=True)
     phone_number = models.CharField(max_length=13, null=True, blank=True)
     image = models.ImageField(upload_to='', null=True, blank=True)
-
+    
     def __str__(self):
         return "%s %s" % (self.firstname, self.last_name)
 # Create your models here.
