@@ -4,6 +4,10 @@ from category.models import Category
 from django.utils.text import slugify
 
 class Blog(models.Model):
+    STATUS_CHOICES = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
     title = models.CharField(max_length=100)
     content = models.TextField()
     image = models.ImageField(upload_to='')
@@ -12,6 +16,7 @@ class Blog(models.Model):
     user = models.ForeignKey(Profile, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=False)
     slug = models.SlugField(null=True, blank=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
 
     def save(self, *args, **kwargs):
         if not self.slug:
